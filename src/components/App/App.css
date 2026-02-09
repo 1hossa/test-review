@@ -10,6 +10,7 @@
 }
 
 .main {
+  /* TODO: Use consistent units (mix of px and em) */
   padding-left: 30px;
   padding-right: 2em;
 }
@@ -27,6 +28,7 @@
 }
 
 .App-header {
+  /* TODO: Remove commented-out CSS properties */
   /*background-color: #282c34;*/
 
   /*color: white;*/
