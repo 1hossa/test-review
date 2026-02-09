@@ -4,6 +4,7 @@ import styles from './InputNewTodo.module.css'
 type InputNewTodoProps = {
     todoTitle: string,
     onChange: (todoTitle: string) => void,
+    // TODO: Avoid 'any' type, use 'Todo' interface
     onSubmit: (todo: any) => void,
 
 }
@@ -12,6 +13,8 @@ type InputNewTodoState = {
 }
 
 export class InputNewTodo extends React.Component<InputNewTodoProps, InputNewTodoState> {
+    // TODO: Syncing state from props in componentDidUpdate is usually an anti-pattern (derived state). 
+    // Consider making this component fully controlled or uncontrolled with a key.
     componentDidUpdate(prevProps: Readonly<InputNewTodoProps>, prevState: Readonly<InputNewTodoState>, snapshot?: any) {
         if (this.props.todoTitle !== prevProps.todoTitle) {
             this.setState({value: this.props.todoTitle})
@@ -23,12 +26,14 @@ export class InputNewTodo extends React.Component<InputNewTodoProps, InputNewTod
     }
 
     handleKeyDown = (event: React.KeyboardEvent) => {
+        // TODO: event.keyCode is deprecated. Use event.key === 'Enter'.
         if (event.keyCode !== 13) {
             return;
         }
 
         event.preventDefault();
 
+        // TODO: Use 'const' or 'let' instead of 'var'.
         var val = this.state.value.trim();
 
         if (val) {
